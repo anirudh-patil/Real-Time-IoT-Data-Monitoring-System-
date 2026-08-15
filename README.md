@@ -23,9 +23,9 @@ It's deployed on real infrastructure (AWS EC2, Nginx, Let's Encrypt) that I prov
 
 | Workspace | What it is | README |
 |---|---|---|
-| [`/frontend`](./Data-Logger-Dashboard/Spike_frontend) | React 19 + TanStack Router/Query dashboard, real-time charts, admin panel | [frontend/README.md](./Data-Logger-Dashboard/Spike_frontend/README.md) |
+| [`/frontend`](./Data-Logger-Dashboard/Spike_Frontend) | React 19 + TanStack Router/Query dashboard, real-time charts, admin panel | [frontend/README.md](./Data-Logger-Dashboard/Spike_Frontend/README.md) |
 | [`/backend`](./Data-Logger-Backend/Spike_backend) | Node.js/Express API — auth, devices, telemetry, alerts, webhooks, WebSocket | [backend/README.md](./Data-Logger-Backend/Spike_backend/README.md) |
-| [`/esp32-firmware`](./Data-Logger-ESP-workspace/esp_to_cloud_connectivity) | ESP32 sketch — UART ingestion from STM32, NTP time sync, MQTT/TLS publish to AWS IoT Core | [esp32-firmware/README.md](./Data-Logger-ESP-workspace/esp_to_cloud_connectivity/README.md) |
+| [`/esp32-firmware`](./Data-Logger-ESP-workspace) | ESP32 sketch — UART ingestion from STM32, NTP time sync, MQTT/TLS publish to AWS IoT Core | [esp32-firmware/README.md](./Data-Logger-ESP-workspace/README.md) |
 | [`/stm32-firmware`](./Data-Logger-Data-Acquisition-using-STM32-Workspace) | STM32 sensor sampling + framed serial protocol to the ESP32 | [stm32-firmware/README.md](./Data-Logger-Data-Acquisition-using-STM32-Workspace/README.md) |
 
 ---
