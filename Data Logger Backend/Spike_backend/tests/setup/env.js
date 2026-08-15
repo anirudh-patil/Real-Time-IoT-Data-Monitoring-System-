@@ -1,0 +1,12 @@
+process.env.NODE_ENV = 'test';
+process.env.AWS_REGION = 'ap-south-1';
+process.env.DYNAMODB_TELEMETRY_TABLE = 'test-telemetry';
+process.env.DYNAMODB_USERS_TABLE = 'test-users';
+process.env.DYNAMODB_DEVICES_TABLE = 'test-devices';
+process.env.DYNAMODB_ALERTS_TABLE = 'test-alerts';
+process.env.DYNAMODB_REFRESH_TOKENS_TABLE = 'test-refresh-tokens';
+process.env.DYNAMODB_ACTIVITY_LOGS_TABLE = 'test-activity-logs';
+process.env.JWT_ACCESS_SECRET = 'test-access-secret';
+process.env.JWT_REFRESH_SECRET = 'test-refresh-secret';
+process.env.AWS_S3_PROFILE_IMAGES_BUCKET = 'test-bucket';
+process.env.ALERT_OFFLINE_CHECK_INTERVAL_SECONDS = '600'; // long enough it never fires mid-test-run
