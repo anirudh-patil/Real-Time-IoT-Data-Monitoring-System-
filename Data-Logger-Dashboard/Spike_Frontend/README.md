@@ -47,7 +47,7 @@ flowchart LR
 
 ---
 
-<b>🔧 1. Environment setup</b> — the only two variables you need
+## 🔧 1. Environment setup — the only two variables you need
 
 Create `.env` in the project root:
 
@@ -66,7 +66,7 @@ VITE_SOCKET_URL=https://your-backend.example.com
 > Vite inlines `VITE_*` at build time — restart the dev server after editing `.env`.
 
 
-<b>📡 2. The API client</b> — one wrapper, every request
+## 📡 2. The API client— one wrapper, every request
 
 Every backend response uses the same envelope:
 
@@ -98,7 +98,7 @@ const summary = await dashboardApi.summary(); // already unwrapped
 
 **Never** call `fetch` directly from a screen. Add an entry to `src/lib/api/endpoints.ts` instead.
 
-<b>🔐 3. Auth & session flow</b> — including the documented security tradeoff
+## 🔐 3. Auth & session flow — including the documented security tradeoff
 
 ```mermaid
 sequenceDiagram
@@ -132,7 +132,7 @@ The backend returns tokens in the JSON body, not `httpOnly` cookies, so JS-reada
 - The requested path + query + hash is preserved as `?redirect=` and sanitized by `src/lib/auth/returnUrl.ts` (root-relative only, never an auth route).
 - Password change / reset → immediate logout, because the backend revokes all sessions.
 
-<b>🧭 4. Routing map</b>
+## 🧭 4. Routing map
 
 | Route | Access | What it does |
 | --- | --- | --- |
@@ -149,7 +149,7 @@ The backend returns tokens in the JSON body, not `httpOnly` cookies, so JS-reada
 
 Roles come from `useAuth()` (`admin` · `engineer` · `viewer`) and gate both routes and individual controls — non-admins never *see* the Users item.
 
-<b>📈 5. Schema-agnostic telemetry</b> — no fixed voltage/current/temperature
+## 📈 5. Schema-agnostic telemetry — no fixed voltage/current/temperature
 
 A reading is a **flat object with dynamic keys**:
 
@@ -176,7 +176,7 @@ One KPI card and one chart are generated **per discovered metric** — adding a 
 **CSV export** (`src/lib/telemetry/csv.ts`) builds a header from every unique key in the loaded range: `timestamp,deviceId,<all metrics>`.
 
 
-<b>🔌 6. Real-time (Socket.IO)</b>
+## 🔌 6. Real-time (Socket.IO)
 
 ```ts
 socket.emit("subscribe:device", deviceId);   // plain string, not an object
@@ -189,7 +189,7 @@ socket.on("alert:new", alert => …);
 - **Push first, poll second.** While the socket is connected, `/telemetry/:id/latest` polling is disabled entirely; disconnected it falls back to 60s. Other queries sit at 60–120s to stay clear of the backend's 429.
 
 
-<b>⚡ 7. Loading, caching & perceived speed</b>
+## ⚡ 7. Loading, caching & perceived speed
 
 - **Skeletons only when earned** — `PageSkeleton` appears after a 1000ms threshold, so fast connections never flash.
 - **Preload on login** — the dashboard route and its data are warmed the moment credentials succeed.
@@ -203,7 +203,7 @@ socket.on("alert:new", alert => …);
 | `GET /alerts/device/:id` | 20 | 100 |
 | `GET /telemetry/:id/history` | 120 | 200 |
 
-<b>🎨 8. Design system</b>
+## 🎨 8. Design system
 
 Tokens live in `src/styles.css` as CSS variables inside a Tailwind v4 `@theme` block — dark-first with a light override, toggled by `src/lib/theme/useTheme.ts` and persisted.
 
@@ -213,7 +213,7 @@ Tokens live in `src/styles.css` as CSS variables inside a Tailwind v4 `@theme` b
 
 Navigation: collapsible icon sidebar on desktop, keyboard-navigable drawer on mobile with roving focus, persisted section state, and `motion-reduce` support throughout.
 
-<b>🗂️ 9. Project layout</b>
+## 🗂️ 9. Project layout
 
 ```text
 src/
@@ -232,7 +232,7 @@ src/
 └─ env.ts        VITE_API_BASE_URL · VITE_SOCKET_URL · API_ORIGIN
 ```
 
-<b>🧪 10. Scripts & CI</b>
+## 🧪 10. Scripts & CI
 
 | Command | Purpose |
 | --- | --- |
@@ -245,7 +245,7 @@ src/
 `.github/workflows/ci.yml` installs with npm (`--legacy-peer-deps`, React 19 peers), lints, tests and builds on every push — that's the guard against package-manager drift.
 
 
-<b>🛟 11. Troubleshooting</b>
+## 🛟 11. Troubleshooting
 
 | Symptom | Cause | Fix |
 | --- | --- | --- |
